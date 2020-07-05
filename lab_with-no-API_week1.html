@@ -1,0 +1,42 @@
+<div>
+    <h1>Currency Converter</h1>
+    <p>Select input currency</p>
+
+    <div>
+        <input type="radio" id="USD" name="radioBtns" value="23262"
+               checked>
+        <label for="USD">USD_VND</label>
+    </div>
+      
+    <div>
+        <input type="radio" id="EUR" name="radioBtns" value="26065">
+        <label for="EUR">EUR_VND</label>
+    </div>
+
+    <div>
+        <input id="yourInput", value="1"/>
+        <button onclick="convertToVnd()">Convert Currency</button>
+    </div>
+
+    <span id="result"></span>
+    
+</div>
+
+<script>
+    function convertToVnd(){
+        let conversion=0;
+        let radios = document.getElementsByName('radioBtns');
+        let i = 0, length = radios.length;
+        for (i = 0, length = radios.length; i < length; i++)
+            if (radios[i].checked) {
+                conversion = radios[i].value;
+                break;
+            }
+        
+        let yourInput = parseInt(document.getElementById("yourInput").value)
+        let VND = conversion * yourInput;
+        
+        result.innerHTML = "<br><br>" + yourInput + " " + radios[i].id + " = " 
+                         + VND.toLocaleString('vi', {style : 'currency', currency : 'VND'});
+    }
+</script>

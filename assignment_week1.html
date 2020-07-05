@@ -1,0 +1,73 @@
+<html>
+<style>
+    h1{
+        color: orangered;
+        background-color: lightgreen;
+        text-align: center;
+    }
+</style>
+
+
+<head>
+    <h1 id="heading">
+        NUMBER GUESSING GAME
+    </h1>
+</head>
+
+
+<body>
+    <p>Guess a number in range [0; 100]</p>
+    <p id="message"><br></p>
+    <input id="input"/>
+    <button id="button", onclick="functionForGuessButton()">Guess</button>
+    <div id="showGuessPast"></div>
+</body>
+
+
+<script>
+    let finalNumber = Math.round(Math.random() * 100);
+    console.log(finalNumber);
+    let remainTimes = 10;
+    let isWin = false;
+
+    let input;
+    let message = document.getElementById("message");
+    let button = document.getElementById("button");
+    let showGuessPast = document.getElementById("showGuessPast");
+
+    function functionForGuessButton() {
+        if(remainTimes > 0) {
+            let input = document.getElementById("input").value;
+            showGuessPast.innerHTML += input + "<br>"
+            if(input > finalNumber) {
+                message.innerHTML = "Too high, guess lower.";
+                message.style.backgroundColor = 'red';
+            } else if(input < finalNumber) {
+                message.innerHTML = "Too low, guess higher.";
+                message.style.backgroundColor = 'red';
+            } else {
+                isWin = true;
+                let count = 10 - remainTimes +1;
+                remainTimes = 1;
+                message.innerHTML = "Congratulation! " + finalNumber + " was correct answer. You've taken " + count + " times.";
+                message.style.backgroundColor = 'green';
+            }
+            remainTimes--;
+            if((isWin == false) && (remainTimes == 0))
+                message.innerHTML = "Lose! No time remain <br> Correct number is " + finalNumber;
+            else 
+                message.innerHTML += "<br>You have " + remainTimes + " times remain";
+        } else 
+            if(confirm("No time remain. Restart game?") == true){
+                finalNumber = Math.round(Math.random() * 100);
+                console.log(finalNumber);
+                remainTimes = 10;
+                isWin = false;
+
+                message.innerHTML = "<br>";
+                message.style.backgroundColor    = "white";
+                showGuessPast.innerHTML = "";
+            }
+    }
+</script>
+</html>
