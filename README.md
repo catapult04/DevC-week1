@@ -1,5 +1,5 @@
-## Demo
+## VideoDemo
 
 <p align="center">
-<img src="./assets/VideoWeek1.mp4" width="300">
+<img src="./assets/VideoWeek1.gif" width="300">
 </p>
